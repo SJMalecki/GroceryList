@@ -1,6 +1,5 @@
 package pl.sjmprofil.grocerylist.network
 
-import android.arch.persistence.room.Insert
 import kotlinx.coroutines.Deferred
 import pl.sjmprofil.grocerylist.model.Response
 import pl.sjmprofil.grocerylist.model.User
@@ -23,5 +22,7 @@ interface ApiService {
         @Field("userPassword") userPassword: String
     ): Deferred<Response>
 
-
+    @FormUrlEncoded
+    @POST("operations.php")
+    fun performPostForDeleteItem(@Field("id") id: Int): Deferred<Response>
 }

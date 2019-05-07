@@ -13,4 +13,8 @@ class ApiRepository(private val context: Context, private val apiService: ApiSer
     suspend fun postRegisterData(s1: String, s2: String, s3: String): Response {
         return apiService.preformPostRegistration(s1, s2, s3).await()
     }
+
+    suspend fun postForDeleteItem(id: Int): Response {
+        return apiService.performPostForDeleteItem(id).await()
+    }
 }

@@ -21,17 +21,17 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        GlobalScope.launch(Dispatchers.Main) {
-            val user = apiRepository.getRegisterData()
-            println(user.response!![0])
-            println(user.response!![1])
-            tvMain.text = user.response!![1].name
-        }
-
-        GlobalScope.launch(Dispatchers.Main) {
-            val apii = apiRepository.postRegisterData("A1", "A2", "A3")
-            println(apii)
-        }
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val user = apiRepository.getRegisterData()
+//            println(user.response!![0])
+//            tvMain.text = user.response!![0].name
+//            indexer = user.response!![0].id
+//
+//            val apii = apiRepository.postRegisterData("A1", "A2", "A3")
+//            println(apii)
+//
+//
+//            println(apiRepository.postForDeleteItem(49))
+//        }
     }
 }
