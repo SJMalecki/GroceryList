@@ -47,7 +47,6 @@ class PrimaryFragment : Fragment(), KodeinAware {
         if (checkForInternetConnection()){
             synchronizeItemList()
         }
-
         setupAdapter()
         setupPrimaryAdapterOnSwipe()
 

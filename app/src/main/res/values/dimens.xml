@@ -7,5 +7,5 @@
     <dimen name="add_item_dialog_fragment_image_size">48dp</dimen>
     <dimen name="add_item_header_text_size">24sp</dimen>
     <dimen name="delete_image_item_row_primary_fragment_size">64dp</dimen>
-    <dimen name="item_row_header_text_size">18sp</dimen>
+    <dimen name="item_row_header_text_size">22sp</dimen>
 </resources>

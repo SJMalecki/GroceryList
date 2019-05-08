@@ -26,6 +26,7 @@
                 tools:text="ASDFASDF"
                 android:textSize="@dimen/item_row_header_text_size"
                 android:gravity="center"
+                android:textColor="#000000"
                 android:layout_toEndOf="@+id/iv_delete_picture_item_row_primary_fragment"
                 android:layout_margin="@dimen/margin_card_view"/>
 
@@ -37,6 +38,7 @@
                 android:layout_below="@+id/tv_item_name_item_row_primary_fragment"
                 tools:text="ASDFASDF"
                 android:gravity="center"
+                android:textColor="@color/colorCreamHard"
                 android:layout_margin="@dimen/margin_card_view"/>
 
     </RelativeLayout>

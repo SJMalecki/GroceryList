@@ -23,7 +23,7 @@
     <string name="add_item_name_dialog_fragment">Produkt</string>
     <string name="add_item_description_dialog_fragment">Opis</string>
     <string name="add_button_dialog_fragment_cancel_button_text">Dodaj</string>
-    <string name="cancel_button_dialog_fragment_cancel_button_text">Cofnij</string>
+    <string name="cancel_button_dialog_fragment_cancel_button_text">Wstecz</string>
 
     <string name="network_error">Network Error</string>
     <string name="check_internet_connection">Please check for your internet connection. \n\nPress OK to open settings

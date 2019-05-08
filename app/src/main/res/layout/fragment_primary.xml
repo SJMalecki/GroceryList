@@ -23,6 +23,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="ADD"/>
+                android:text="@string/add_item_dialog_fragment_text_view_add"
+                android:textSize="@dimen/add_item_header_text_size"
+                android:background="@drawable/add_button_primary_fragment_ripple_effect"
+        />
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
