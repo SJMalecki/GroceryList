@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_card_view">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/iv_delete_picture_item_row_primary_fragment"
+                android:layout_width="@dimen/delete_image_item_row_primary_fragment_size"
+                android:layout_height="@dimen/delete_image_item_row_primary_fragment_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_delete_forever_black_24dp"
+                android:layout_margin="@dimen/margin_card_view"/>
+
+        <TextView
+                android:id="@+id/tv_item_name_item_row_primary_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="ASDFASDF"
+                android:textSize="@dimen/item_row_header_text_size"
+                android:gravity="center"
+                android:layout_toEndOf="@+id/iv_delete_picture_item_row_primary_fragment"
+                android:layout_margin="@dimen/margin_card_view"/>
+
+        <TextView
+                android:id="@+id/tv_item_id_item_row_primary_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/iv_delete_picture_item_row_primary_fragment"
+                android:layout_below="@+id/tv_item_name_item_row_primary_fragment"
+                tools:text="ASDFASDF"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_card_view"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

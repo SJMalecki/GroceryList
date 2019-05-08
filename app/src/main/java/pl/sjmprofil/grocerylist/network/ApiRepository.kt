@@ -2,11 +2,11 @@ package pl.sjmprofil.grocerylist.network
 
 import android.content.Context
 import pl.sjmprofil.grocerylist.model.Response
-import pl.sjmprofil.grocerylist.model.User
+import pl.sjmprofil.grocerylist.model.JsonObject
 
 class ApiRepository(private val context: Context, private val apiService: ApiService){
 
-    suspend fun getRegisterData(): User {
+    suspend fun getRegisterData(): JsonObject {
         return apiService.performRegistration("seb1", "useb1", "pseb1").await()
     }
 

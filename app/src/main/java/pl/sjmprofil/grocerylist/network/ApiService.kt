@@ -2,7 +2,7 @@ package pl.sjmprofil.grocerylist.network
 
 import kotlinx.coroutines.Deferred
 import pl.sjmprofil.grocerylist.model.Response
-import pl.sjmprofil.grocerylist.model.User
+import pl.sjmprofil.grocerylist.model.JsonObject
 import retrofit2.http.*
 
 interface ApiService {
@@ -12,7 +12,7 @@ interface ApiService {
         @Query("name") name: String,
         @Query("user_name") userName: String,
         @Query("user_password") userPassword: String
-    ): Deferred<User>
+    ): Deferred<JsonObject>
 
     @FormUrlEncoded
     @POST("register.php")

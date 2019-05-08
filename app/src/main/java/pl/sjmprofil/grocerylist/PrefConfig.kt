@@ -27,7 +27,7 @@ class PrefConfig(private val context: Context) {
     }
 
     fun readName(): String {
-        return sharedPreferences.getString(context.getString(R.string.pref_user_name), "User")
+        return sharedPreferences.getString(context.getString(R.string.pref_user_name), "JsonObject")
     }
 
     fun displayToast(message: String) {

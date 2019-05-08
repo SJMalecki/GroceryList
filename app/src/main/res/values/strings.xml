@@ -19,4 +19,17 @@
     <string name="pref_login_status">pl.sjmprofil.preference_login_status</string>
     <string name="pref_user_name">pl.sjmprofil.user_name</string>
     <string name="api_endpoint_address">http://sjmprofil.pl/list/</string>
+    <string name="add_item_dialog_fragment_text_view_add">Dodaj</string>
+    <string name="add_item_name_dialog_fragment">Produkt</string>
+    <string name="add_item_description_dialog_fragment">Opis</string>
+    <string name="add_button_dialog_fragment_cancel_button_text">Dodaj</string>
+    <string name="cancel_button_dialog_fragment_cancel_button_text">Cofnij</string>
+
+    <string name="network_error">Network Error</string>
+    <string name="check_internet_connection">Please check for your internet connection. \n\nPress OK to open settings
+    </string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="connection_condition">You must be connected to internet</string>
+    <string name="menu_settings">Settings</string>
 </resources>
