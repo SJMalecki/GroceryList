@@ -12,13 +12,17 @@ import pl.sjmprofil.grocerylist.network.ApiRepository
 import pl.sjmprofil.grocerylist.network.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class MyApplictaion: Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
 
         bind<OkHttpClient>() with singleton {
-            OkHttpClient.Builder().build()
+            OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .build()
         }
 
         bind<Retrofit>() with singleton {

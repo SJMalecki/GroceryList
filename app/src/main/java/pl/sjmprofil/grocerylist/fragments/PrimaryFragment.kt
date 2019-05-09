@@ -13,10 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_primary.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.kodein
 import org.kodein.di.generic.instance
@@ -33,6 +30,8 @@ class PrimaryFragment : Fragment(), KodeinAware {
 
     private val dialogFragmentAddItem = AddItemDialogFragment()
     private var onSwipeJob: Job? = null
+    private var onDeleteItemJob: Job? = null
+    private var onAddItemJob: Job? = null
 
     private var primaryAdapter: PrimaryFragmentRecyclerViewAdapter = PrimaryFragmentRecyclerViewAdapter()
 
@@ -44,11 +43,13 @@ class PrimaryFragment : Fragment(), KodeinAware {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (checkForInternetConnection()){
-            synchronizeItemList()
-        }
         setupAdapter()
         setupPrimaryAdapterOnSwipe()
+
+        if (checkForInternetConnection()){
+            swipe_refresh_layout_primary_fragment.isRefreshing = true
+            synchronizeItemList()
+        }
 
         primaryAdapter.onDeleteImageUsed = {item: Item, id: Int -> deleteItemFromItemList(item, id)}
         setupEditBioButton()
@@ -57,10 +58,7 @@ class PrimaryFragment : Fragment(), KodeinAware {
     private fun setupPrimaryAdapterOnSwipe() {
         swipe_refresh_layout_primary_fragment.setOnRefreshListener {
             if (checkForInternetConnection()) {
-                onSwipeJob = GlobalScope.launch(Dispatchers.Main) {
                     synchronizeItemList()
-                    swipe_refresh_layout_primary_fragment.isRefreshing = false
-                }
             } else {
                 swipe_refresh_layout_primary_fragment.isRefreshing = false
             }
@@ -78,15 +76,18 @@ class PrimaryFragment : Fragment(), KodeinAware {
         recycler_view_primary_fragment.adapter = primaryAdapter
     }
 
-    private fun synchronizeItemList() = GlobalScope.launch(Dispatchers.Main) {
-        val itemObject: JsonObject = apiRepository.getRegisterData()
-        val itemList: MutableList<Item> = itemObject.response as MutableList<Item>
-        primaryAdapter.swapPrimaryFragmentItemList(itemList)
+    private fun synchronizeItemList()  {
+        onSwipeJob = GlobalScope.launch(Dispatchers.Main) {
+            val itemObject: JsonObject = apiRepository.getRegisterData()
+            val itemList: MutableList<Item> = itemObject.response as MutableList<Item>
+            primaryAdapter.swapFragmentItemList(itemList)
+            swipe_refresh_layout_primary_fragment.isRefreshing = false
+        }
     }
 
     private fun deleteItemFromItemList(item: Item, id: Int) {
         if(checkForInternetConnection()){
-            GlobalScope.launch(Dispatchers.Main) {
+            onDeleteItemJob = GlobalScope.launch(Dispatchers.Main) {
                 apiRepository.postForDeleteItem(id)
                 primaryAdapter.deletePrimaryFragmentItem(item)
             }
@@ -95,7 +96,7 @@ class PrimaryFragment : Fragment(), KodeinAware {
 
     private fun addItemToItemList(s1: String?, s2: String?, s3: String?) {
        if(checkForInternetConnection()){
-           GlobalScope.launch(Dispatchers.Main) {
+           onAddItemJob = GlobalScope.launch(Dispatchers.Main) {
                apiRepository.postRegisterData(s1 ?:"",s2 ?:"", s3 ?:"")
                val itemObject: JsonObject = apiRepository.getRegisterData()
                val itemList: MutableList<Item> = itemObject.response as MutableList<Item>
@@ -138,5 +139,12 @@ class PrimaryFragment : Fragment(), KodeinAware {
             Toast.makeText(context!!, getString(R.string.connection_condition), Toast.LENGTH_LONG).show()
         }
         alertDialog.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        onSwipeJob?.cancel()
+        onDeleteItemJob?.cancel()
+        onAddItemJob?.cancel()
     }
 }

@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.RegistrationFragment">
+        tools:context=".fragments.LocalFragment">
 
     <TextView
             android:id="@+id/text_view_header_registration_fragment"
