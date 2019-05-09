@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_row_primary_fragment.view.*
 import pl.sjmprofil.grocerylist.R
+import pl.sjmprofil.grocerylist.database.LocalItem
 import pl.sjmprofil.grocerylist.model.Item
 
-class LocalFragmentRecylerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHolder>() {
 
-    private val localFragmentItemList: MutableList<Item> = mutableListOf(Item(1,"A","B","C"))
-    var onDeleteImageUsed: ((Item, Int) -> Unit?)? = null
+class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHolder>() {
+
+    private val localFragmentItemList: MutableList<LocalItem> = mutableListOf()
+    var onDeleteImageUsed: ((LocalItem, Long) -> Unit?)? = null
+    var onAddImageUsed: ((LocalItem, Long) -> Unit?)? = null
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): LocalFragmentViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
@@ -37,11 +40,17 @@ class LocalFragmentRecylerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHol
         }
     }
 
-    fun swapFragmentItemList(itemList: MutableList<Item>) {
+    fun swapFragmentItemList(itemList: MutableList<LocalItem>) {
         localFragmentItemList.clear()
         localFragmentItemList.addAll(itemList)
         localFragmentItemList.sortBy { it.name }
         notifyDataSetChanged()
+    }
+
+    fun addLocalFragmentItem(localItem: LocalItem){
+        localFragmentItemList.add(localItem)
+        localFragmentItemList.sortBy { it.name }
+        notifyItemInserted(localFragmentItemList.indexOf(localItem))
     }
 }
 

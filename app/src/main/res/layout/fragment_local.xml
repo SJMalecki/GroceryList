@@ -11,13 +11,13 @@
             android:id="@+id/recycler_view_local_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/button_add_primary_fragment"
+            android:layout_above="@+id/button_add_local_fragment"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item_row_primary_fragment">
     </android.support.v7.widget.RecyclerView>
 
     <Button
-            android:id="@+id/button_add_primary_fragment"
+            android:id="@+id/button_add_local_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

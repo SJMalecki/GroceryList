@@ -1,6 +1,7 @@
 package pl.sjmprofil.grocerylist
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
@@ -8,6 +9,9 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
+import pl.sjmprofil.grocerylist.adapters.LocalFragmentRecyclerViewAdapter
+import pl.sjmprofil.grocerylist.database.Database
+import pl.sjmprofil.grocerylist.database.Repository
 import pl.sjmprofil.grocerylist.network.ApiRepository
 import pl.sjmprofil.grocerylist.network.ApiService
 import retrofit2.Retrofit
@@ -41,6 +45,19 @@ class MyApplictaion: Application(), KodeinAware {
 
         bind<ApiRepository>() with singleton {
             ApiRepository(applicationContext, instance())
+        }
+
+        bind<Database>() with singleton {
+            Room.databaseBuilder(applicationContext, Database::class.java, "localGroceryListItem.db")
+                .fallbackToDestructiveMigration().build()
+        }
+
+        bind<Repository>() with singleton {
+            Repository(instance())
+        }
+
+        bind<LocalFragmentRecyclerViewAdapter>() with singleton {
+            LocalFragmentRecyclerViewAdapter()
         }
     }
 }
