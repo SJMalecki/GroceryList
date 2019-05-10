@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.item_row_primary_fragment.view.*
+import kotlinx.android.synthetic.main.item_row_local_fragment.view.*
 import pl.sjmprofil.grocerylist.R
 import pl.sjmprofil.grocerylist.database.LocalItem
 
@@ -18,7 +18,7 @@ class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHo
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): LocalFragmentViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
-        val itemRow = layoutInflater.inflate(R.layout.item_row_primary_fragment, viewGroup, false)
+        val itemRow = layoutInflater.inflate(R.layout.item_row_local_fragment, viewGroup, false)
         return LocalFragmentViewHolder(itemRow)
     }
 
@@ -27,15 +27,15 @@ class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHo
     }
 
     override fun onBindViewHolder(viewHolder: LocalFragmentViewHolder, position: Int) {
-        viewHolder.view.tv_item_name_item_row_primary_fragment.text = localFragmentItemList[position].name
-        viewHolder.view.tv_item_id_item_row_primary_fragment.text = localFragmentItemList[position].userName.toString()
-        viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = true
-        viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamTransparent))
+        viewHolder.view.tv_item_name_item_row_local_fragment.text = localFragmentItemList[position].name
+        viewHolder.view.tv_item_id_item_row_local_fragment.text = localFragmentItemList[position].userName.toString()
+        viewHolder.view.iv_delete_picture_item_row_local_fragment.isClickable = true
+        viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorTransparent))
 
-        viewHolder.view.iv_delete_picture_item_row_primary_fragment.setOnClickListener{
+        viewHolder.view.iv_delete_picture_item_row_local_fragment.setOnClickListener{
             onDeleteImageUsed?.invoke(localFragmentItemList[viewHolder.adapterPosition], localFragmentItemList[viewHolder.adapterPosition].id ?:0)
             println(localFragmentItemList[viewHolder.adapterPosition])
-            viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = false
+            viewHolder.view.iv_delete_picture_item_row_local_fragment.isClickable = false
             viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorPrimaryTransparent))
         }
     }

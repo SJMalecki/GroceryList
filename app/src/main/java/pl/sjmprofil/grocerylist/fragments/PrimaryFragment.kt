@@ -18,7 +18,10 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.kodein
 import org.kodein.di.generic.instance
 import pl.sjmprofil.grocerylist.R
+import pl.sjmprofil.grocerylist.adapters.LocalFragmentRecyclerViewAdapter
 import pl.sjmprofil.grocerylist.adapters.PrimaryFragmentRecyclerViewAdapter
+import pl.sjmprofil.grocerylist.database.LocalItem
+import pl.sjmprofil.grocerylist.database.Repository
 import pl.sjmprofil.grocerylist.model.Item
 import pl.sjmprofil.grocerylist.model.JsonObject
 import pl.sjmprofil.grocerylist.network.ApiRepository
@@ -27,6 +30,9 @@ class PrimaryFragment : Fragment(), KodeinAware {
 
     override val kodein by kodein()
     private val apiRepository: ApiRepository by instance()
+
+    private val localAdapter: LocalFragmentRecyclerViewAdapter by instance()
+    private val localItemRepository: Repository by instance()
 
     private val dialogFragmentAddItem = AddItemDialogFragment()
     private var onSwipeJob: Job? = null
@@ -52,6 +58,7 @@ class PrimaryFragment : Fragment(), KodeinAware {
         }
 
         primaryAdapter.onDeleteImageUsed = {item: Item, id: Int -> deleteItemFromItemList(item, id)}
+        primaryAdapter.onMoveImageUsed = {item: Item, id: Int -> movedItemFromItemList(item, id)}
         setupEditBioButton()
     }
 
@@ -86,6 +93,24 @@ class PrimaryFragment : Fragment(), KodeinAware {
     }
 
     private fun deleteItemFromItemList(item: Item, id: Int) {
+        if(checkForInternetConnection()){
+            onDeleteItemJob = GlobalScope.launch(Dispatchers.Main) {
+                apiRepository.postForDeleteItem(id)
+                primaryAdapter.deletePrimaryFragmentItem(item)
+            }
+        }
+    }
+
+    private fun movedItemFromItemList(item: Item, id: Int) {
+        val s1 = item.name
+        val s2 = item.userName
+        val s3 = item.userPassword
+        onAddItemJob = GlobalScope.launch(Dispatchers.Main) {
+            val localItem = LocalItem(null, s1, s2, s3)
+            localItemRepository.addLocalJoke(localItem)
+            val lastAddedItem = localItemRepository.getAllLocalJokes().last()
+            localAdapter.addLocalFragmentItem(lastAddedItem)
+        }
         if(checkForInternetConnection()){
             onDeleteItemJob = GlobalScope.launch(Dispatchers.Main) {
                 apiRepository.postForDeleteItem(id)

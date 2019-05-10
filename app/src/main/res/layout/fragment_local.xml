@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/button_add_local_fragment"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_row_primary_fragment">
+            tools:listitem="@layout/item_row_local_fragment">
     </android.support.v7.widget.RecyclerView>
 
     <Button
@@ -24,6 +24,7 @@
             android:text="@string/add_item_dialog_fragment_text_view_add"
             android:layout_margin="@dimen/margin_card_view"
             android:textSize="@dimen/add_item_header_text_size"
-            android:background="@drawable/add_button_primary_fragment_ripple_effect"/>
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/add_button_local_fragment_ripple_effect"/>
 </RelativeLayout>
 

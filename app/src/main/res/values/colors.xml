@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#38220f</color>
-    <color name="colorPrimaryTransparent">#CB38220F</color>
-    <color name="colorCreamTransparent">#40fbe0c0</color>
+    <color name="colorPrimary">#181510</color>
+    <color name="colorPrimaryTransparent">#8138220F</color>
+    <color name="colorDarkCreamTransparent">#81785F37</color>
     <color name="colorPrimaryDark">#634832</color>
-    <color name="colorPrimaryDarkTransparent">#634832</color>
-    <color name="colorAccent">#F9A825</color>
-    <color name="colorCreamLight">#fbe8d9</color>
-    <color name="colorCreamMedium">#fbe0c0</color>
-    <color name="colorCreamHard">#ddc4b1</color>
+    <color name="colorPrimaryDarkTransparent">#81634832</color>
+    <color name="colorAccent">#785f37</color>
+    <color name="colorAccentTransparent">#81785f37</color>
+    <color name="colorCreamLight">#e9dbbd</color>
+    <color name="colorCreamLightTransparent">#81e9dbbd</color>
+    <color name="colorCreamMedium">#cbb682</color>
+    <color name="colorCreamMediumTransparent">#81CBB682</color>
+    <color name="colorCreamHard">#a08c5b</color>
+    <color name="colorCreamHardTransparent">#81a08c5b</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>
+
+<!--
+    #e9dbbd
+    #cbb682
+    #a08c5b
+    #785f37
+    #181510
+-->

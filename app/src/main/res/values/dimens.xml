@@ -6,6 +6,7 @@
     <dimen name="add_bio_dialog_fragment_image_size">48dp</dimen>
     <dimen name="add_item_dialog_fragment_image_size">48dp</dimen>
     <dimen name="add_item_header_text_size">24sp</dimen>
-    <dimen name="delete_image_item_row_primary_fragment_size">64dp</dimen>
+    <dimen name="delete_image_item_row_primary_fragment_size">40dp</dimen>
     <dimen name="item_row_header_text_size">22sp</dimen>
+    <dimen name="delete_image_item_row_local_fragment_size">40dp</dimen>
 </resources>
