@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_row_primary_fragment.view.*
 import pl.sjmprofil.grocerylist.R
 import pl.sjmprofil.grocerylist.database.LocalItem
-import pl.sjmprofil.grocerylist.model.Item
 
 
 class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHolder>() {
@@ -35,6 +34,7 @@ class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHo
 
         viewHolder.view.iv_delete_picture_item_row_primary_fragment.setOnClickListener{
             onDeleteImageUsed?.invoke(localFragmentItemList[viewHolder.adapterPosition], localFragmentItemList[viewHolder.adapterPosition].id ?:0)
+            println(localFragmentItemList[viewHolder.adapterPosition])
             viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = false
             viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorPrimaryTransparent))
         }
@@ -51,6 +51,18 @@ class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHo
         localFragmentItemList.add(localItem)
         localFragmentItemList.sortBy { it.name }
         notifyItemInserted(localFragmentItemList.indexOf(localItem))
+        println("ID OF LOCALS ${localItem.id}")
+    }
+
+    fun deleteLocalFragmentItem(id: Long?) {
+//      println("\n$localFragmentItemList")
+        val item = localFragmentItemList.find { it.id == id }
+        val position = localFragmentItemList.indexOf(item)
+//        println("\n$item\n")
+        localFragmentItemList.remove(item)
+        localFragmentItemList.sortBy { it.name}
+        notifyItemRemoved(position)
+//        println(localFragmentItemList)
     }
 }
 

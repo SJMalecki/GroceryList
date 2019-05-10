@@ -50,6 +50,7 @@ class LocalFragment : Fragment(), KodeinAware {
 
         synchronizeItemList()
         setupEditBioButton()
+        localAdapter.onDeleteImageUsed = { localItem, id -> deleteItemFromList(localItem, id)}
     }
 
     private fun setupEditBioButton() {
@@ -61,6 +62,13 @@ class LocalFragment : Fragment(), KodeinAware {
 
     private fun setupAdapter() {
         recycler_view_local_fragment.adapter = localAdapter
+    }
+
+    private fun deleteItemFromList(localItem: LocalItem, id: Long?){
+        onDeleteItemJob = GlobalScope.launch(Dispatchers.Main) {
+            localItemRepository.deleteLocalJoke(localItem)
+            localAdapter.deleteLocalFragmentItem(id)
+        }
     }
 
     private fun addItemToItemList(s1: String?, s2: String?, s3: String?) {

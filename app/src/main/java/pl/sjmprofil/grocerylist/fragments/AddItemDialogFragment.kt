@@ -30,6 +30,7 @@ class AddItemDialogFragment: DialogFragment() {
                 tv_add_header_dialog_fragment.text.toString(),
                 tv_add_description_dialog_fragment.text.toString())
             tv_add_header_dialog_fragment.text.clear()
+            tv_add_description_dialog_fragment.text.clear()
         }
     }
 }
