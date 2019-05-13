@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.item_row_local_fragment.view.*
 import kotlinx.android.synthetic.main.item_row_primary_fragment.view.*
 import pl.sjmprofil.grocerylist.R
 import pl.sjmprofil.grocerylist.model.Item
@@ -32,18 +33,18 @@ class PrimaryFragmentRecyclerViewAdapter: RecyclerView.Adapter<PrimaryFragmentVi
         viewHolder.view.tv_item_id_item_row_primary_fragment.text = primaryItemList[position].userName.toString()
         viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = true
         viewHolder.view.iv_swipe_picture_item_row_primary_fragment.isClickable = true
-        viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorTransparent))
+        viewHolder.view.card_view_primary_fragment.setCardBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamHardTransparent))
 
         viewHolder.view.iv_delete_picture_item_row_primary_fragment.setOnClickListener{
             onDeleteImageUsed?.invoke(primaryItemList[viewHolder.adapterPosition], primaryItemList[viewHolder.adapterPosition].id ?:0)
             viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = false
-            viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorPrimaryTransparent))
+            viewHolder.view.card_view_primary_fragment.setCardBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamHardTransparent))
         }
 
         viewHolder.view.iv_swipe_picture_item_row_primary_fragment.setOnClickListener{
             onMoveImageUsed?.invoke(primaryItemList[viewHolder.adapterPosition], primaryItemList[viewHolder.adapterPosition].id ?:0)
             viewHolder.view.iv_swipe_picture_item_row_primary_fragment.isClickable = false
-            viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorPrimaryTransparent))
+            viewHolder.view.card_view_primary_fragment.setCardBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamHardTransparent))
         }
     }
 

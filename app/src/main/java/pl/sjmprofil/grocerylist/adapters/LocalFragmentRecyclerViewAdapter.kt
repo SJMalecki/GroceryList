@@ -30,13 +30,13 @@ class LocalFragmentRecyclerViewAdapter: RecyclerView.Adapter<LocalFragmentViewHo
         viewHolder.view.tv_item_name_item_row_local_fragment.text = localFragmentItemList[position].name
         viewHolder.view.tv_item_id_item_row_local_fragment.text = localFragmentItemList[position].userName.toString()
         viewHolder.view.iv_delete_picture_item_row_local_fragment.isClickable = true
-        viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorTransparent))
+        viewHolder.view.card_view_local_fragment.setCardBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorTransparent))
 
         viewHolder.view.iv_delete_picture_item_row_local_fragment.setOnClickListener{
             onDeleteImageUsed?.invoke(localFragmentItemList[viewHolder.adapterPosition], localFragmentItemList[viewHolder.adapterPosition].id ?:0)
             println(localFragmentItemList[viewHolder.adapterPosition])
             viewHolder.view.iv_delete_picture_item_row_local_fragment.isClickable = false
-            viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorPrimaryTransparent))
+            viewHolder.view.card_view_local_fragment.setCardBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamHardTransparent))
         }
     }
 

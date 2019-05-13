@@ -23,9 +23,9 @@
             <corners android:radius="6dp" />
             <gradient
                     android:angle="90"
-                    android:endColor="@color/colorTransparent"
-                    android:centerColor="@color/colorCreamHardTransparent"
-                    android:startColor="@color/colorPrimaryTransparent" />
+                    android:endColor="@color/colorCreamMediumTransparent"
+                    android:centerColor="@color/colorCreamLightTransparent"
+                    android:startColor="@color/colorTransparent" />
         </shape>
     </item>
 </layer-list>
