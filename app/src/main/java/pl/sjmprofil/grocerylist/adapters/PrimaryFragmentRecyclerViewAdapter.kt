@@ -32,7 +32,7 @@ class PrimaryFragmentRecyclerViewAdapter: RecyclerView.Adapter<PrimaryFragmentVi
         viewHolder.view.tv_item_id_item_row_primary_fragment.text = primaryItemList[position].userName.toString()
         viewHolder.view.iv_delete_picture_item_row_primary_fragment.isClickable = true
         viewHolder.view.iv_swipe_picture_item_row_primary_fragment.isClickable = true
-        //viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorCreamTransparent))
+        viewHolder.view.setBackgroundColor(ContextCompat.getColor(viewHolder.view.context, R.color.colorTransparent))
 
         viewHolder.view.iv_delete_picture_item_row_primary_fragment.setOnClickListener{
             onDeleteImageUsed?.invoke(primaryItemList[viewHolder.adapterPosition], primaryItemList[viewHolder.adapterPosition].id ?:0)
